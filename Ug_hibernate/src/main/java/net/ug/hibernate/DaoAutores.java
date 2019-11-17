@@ -1,0 +1,59 @@
+package net.ug.hibernate;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+
+public class DaoAutores {
+	protected SessionFactory sessionFactory;
+	
+	protected void setup() {
+		final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
+				.configure()  //lee los settings del archivo hibernate.cfg.xml
+				.build();
+		try {
+			sessionFactory = new MetadataSources(registry)
+					.buildMetadata().buildSessionFactory();			
+		} catch (Exception e) {
+			StandardServiceRegistryBuilder.destroy(registry);
+		}
+		
+	}
+	
+	protected void crear(Autores autor) {
+		Session s =  sessionFactory.openSession();
+		s.beginTransaction();
+		s.save(autor);
+		s.getTransaction().commit();
+		s.close();
+	}
+	
+	protected Autores read(long id_aut) {
+		Session s =  sessionFactory.openSession();
+		Autores autor = s.get(Autores.class, id_aut);
+		s.close();
+		return autor;
+	}
+	
+	protected void update(Autores autor) {
+		Session s =  sessionFactory.openSession();
+		s.beginTransaction();
+		s.update(autor);
+		s.getTransaction().commit();
+		s.close();
+	}
+	
+	
+	protected void delete(int id_aut) {
+		Session s =  sessionFactory.openSession();
+		s.beginTransaction();
+		Autores autor = new Autores();
+		autor.setId(id_aut);
+		s.delete(autor);
+		s.getTransaction().commit();
+		s.close();
+	}
+
+}
