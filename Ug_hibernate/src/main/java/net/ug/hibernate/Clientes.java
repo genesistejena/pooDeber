@@ -1,6 +1,5 @@
 package net.ug.hibernate;
 
-import java.util.Date;
 import javax.persistence.*;
 
 @Entity
@@ -94,7 +93,10 @@ public class Clientes {
 		this.esActivo = esActivo;
 	}
     
-    
+	public void imprimir() {
+		System.out.println(nombres);
+
+	}
     
 }
 

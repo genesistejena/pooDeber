@@ -32,14 +32,14 @@ public class DaoAutores {
 		s.close();
 	}
 	
-/*	protected Autores read(long id_aut) {
+	public Autores read(long id_aut) {
 		Session s =  sessionFactory.openSession();
 		Autores autor = s.get(Autores.class, id_aut);
 		s.close();
 		return autor;
 	}
 	
-	protected void update(Autores autor) {
+	public void update(Autores autor) {
 		Session s =  sessionFactory.openSession();
 		s.beginTransaction();
 		s.update(autor);
@@ -48,7 +48,7 @@ public class DaoAutores {
 	}
 	
 	
-	protected void delete(int id_aut) {
+	public void delete(int id_aut) {
 		Session s =  sessionFactory.openSession();
 		s.beginTransaction();
 		Autores autor = new Autores();
@@ -56,6 +56,6 @@ public class DaoAutores {
 		s.delete(autor);
 		s.getTransaction().commit();
 		s.close();
-	}*/
+	}
 
 }

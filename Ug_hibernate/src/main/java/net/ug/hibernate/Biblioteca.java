@@ -53,7 +53,6 @@ public class Biblioteca {
 	public void imprimir() {
 		System.out.println(nombre);
 
-
-
 	}
+	
 }

@@ -1,6 +1,6 @@
 package net.ug.hibernate;
 
-import java.util.Date;
+
 import javax.persistence.*;
 
 @Entity
@@ -61,10 +61,11 @@ public class Autores {
 	public void setFechaNacimiento(String fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
-
-
 	
-    
- 
+	public void imprimir() {
+		System.out.println(nombres);
+
+	}
+
     
 }
